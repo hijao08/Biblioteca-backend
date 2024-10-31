@@ -5,6 +5,10 @@ class Livro(models.Model):
     titulo = models.CharField(max_length=255)
     autor = models.CharField(max_length=255)
     disponivel = models.BooleanField(default=True)
+    imagem = models.ImageField(upload_to='livros/', null=True, blank=True)  # Campo de imagem
+
+    def __str__(self):
+        return self.titulo
 
 class Emprestimo(models.Model):
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
